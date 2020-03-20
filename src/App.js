@@ -23,9 +23,32 @@ const Global = createGlobalStyle({
   },
 })
 
+
+
 const accessToken = localStorage.getItem('token')
 
+fetch('https://api.github.com/graphql', {
+  method: 'POST',
+  headers: {
+    Authorization: `bearer ${accessToken}`,
+  },
+  body: JSON.stringify({
+    query: `
+    {
+      viewer {
+        name
+      }
+    }
+    `
+  })
+})
+  .then(res => res.json())
+  .then(json => {
+    console.log('-->', json)
+  })
+
 function App() {
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleSubmit = (event, token) => {
     event.preventDefault()

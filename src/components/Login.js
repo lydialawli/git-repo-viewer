@@ -25,29 +25,42 @@ const Input = styled.input`
   padding: '8px 30px';
 `
 
+const ErrorMsg = styled.text`
+  color: red;
+`
 
-const Login = ({ onSubmit }) => {
+
+const Login = ({ onSubmit, errorMsg }) => {
   const [token, setToken] = useState('')
 
   return (
-    <form onSubmit={e => onSubmit(e, token)}>
-      <h1 >Git Repo Viewer</h1>
-      <Input
-        type="password"
-        name="token"
-        value={token}
-        onChange={e => {
-          setToken(e.target.value)
-        }}
-        placeholder="Paste your GitHub token"
-      />
-      <Button css={{ width: '100%', fontFamily: 'monospace' }}>SUBMIT</Button>
-    </form>
+    <section>
+      <form onSubmit={e => onSubmit(e, token)}>
+        <h1 >Git Repo Viewer</h1>
+        <Input
+          type="password"
+          name="token"
+          value={token}
+          onChange={e => {
+            setToken(e.target.value)
+          }}
+          placeholder="Paste your GitHub token"
+        />
+        <Button css={{ width: '100%', fontFamily: 'monospace' }}>SUBMIT</Button>
+      </form>
+      <ErrorMsg >{errorMsg}</ErrorMsg>
+    </section>
+
   )
 }
 
 Login.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  errorMsg: PropTypes.string,
+}
+
+Login.defaultProps = {
+  errorMsg: ''
 }
 
 export default Login

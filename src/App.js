@@ -4,12 +4,10 @@ import { ApolloProvider } from 'react-apollo'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import './App.css'
-import Search from './components/Search'
 import HeaderBar from './components/HeaderBar'
-import Tabs from './components/Tabs'
+import Content from './components/Content'
 import Login from './components/Login'
 import { createGlobalStyle } from 'styled-components'
-
 import 'styled-components/macro'
 
 const Global = createGlobalStyle({
@@ -47,25 +45,25 @@ const client = new ApolloClient({
 function App() {
   const [errorMsg, setErrorMsg] = useState('')
 
-  fetch('https://api.github.com/graphql', {
-    method: 'POST',
-    headers: {
-      Authorization: `bearer ${accessToken}`,
-    },
-    body: JSON.stringify({
-      query: `
-    {
-      viewer {
-        name
-      }
-    }
-    `
-    })
-  })
-    .then(res => res.json())
-    .then(json => {
-      console.log('-->', json)
-    })
+  // fetch('https://api.github.com/graphql', {
+  //   method: 'POST',
+  //   headers: {
+  //     Authorization: `bearer ${accessToken}`,
+  //   },
+  //   body: JSON.stringify({
+  //     query: `
+  //   {
+  //     viewer {
+  //       name
+  //     }
+  //   }
+  //   `
+  //   })
+  // })
+  //   .then(res => res.json())
+  //   .then(json => {
+  //     console.log('-->', json)
+  //   })
 
   const handleSubmit = (event, token) => {
     event.preventDefault()
@@ -86,18 +84,7 @@ function App() {
       {accessToken ?
         <ApolloProvider client={client}>
           <HeaderBar onLogout={logOut} />
-          <Search />
-          <Tabs>
-            <div label="Pull requests">
-              <em>List of pull requests</em>
-            </div>
-            <div label="Open issues">
-              <em>List of open issues</em>
-            </div>
-            <div label="Closed issues">
-              <em>List of closed issues</em>
-            </div>
-          </Tabs>
+          <Content />
         </ApolloProvider>
         :
         <Login onSubmit={handleSubmit} />

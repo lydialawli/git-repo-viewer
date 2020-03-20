@@ -10,6 +10,8 @@ import 'styled-components/macro'
 const Global = createGlobalStyle({
   body: {
     backgroundColor: '#fff',
+    display: 'flex',
+    justifyContent: 'center',
     color: '#444',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto"',
     paddingTop: '20px',
@@ -23,7 +25,7 @@ const Global = createGlobalStyle({
 
 
 function App() {
-  const [logedIn, setLogedIn] = useState(true)
+  const [logedIn, setLogedIn] = useState(false)
 
 
   return (
@@ -42,7 +44,7 @@ function App() {
             <div label="Open issues">
               <em>List of open issues</em>
             </div>
-            <div label="Closed issues">
+            <div label="Closed issues">y
               <em>List of closed issues</em>
             </div>
           </Tabs>

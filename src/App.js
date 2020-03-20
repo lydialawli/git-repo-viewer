@@ -23,19 +23,29 @@ const Global = createGlobalStyle({
   },
 })
 
+const accessToken = localStorage.getItem('token')
 
 function App() {
-  const [logedIn, setLogedIn] = useState(false)
 
+  const handleSubmit = (event, token) => {
+    event.preventDefault()
+    localStorage.setItem('token', token)
+    window.location.reload()
+  }
+
+  const logOut = () => {
+    console.log('accesToken => ', accessToken)
+
+    localStorage.clear()
+    window.location.reload()
+  }
 
   return (
     <>
       <Global />
-      {!logedIn ?
-        <Login onSubmit={() => setLogedIn(true)} />
-        :
+      {accessToken ?
         <>
-          <div onClick={() => setLogedIn(false)}>Logout</div>
+          <div onClick={logOut}>Logout</div>
           <Search />
           <Tabs>
             <div label="Pull requests">
@@ -49,6 +59,8 @@ function App() {
             </div>
           </Tabs>
         </>
+        :
+        <Login onSubmit={handleSubmit} />
       }
     </>
   )

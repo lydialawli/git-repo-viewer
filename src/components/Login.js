@@ -17,17 +17,20 @@ const Button = styled.button`
 `
 
 const Input = styled.input`
+  width: 300px;
+  height: 30px;
   borderRadius: 4;
   fontSize: 18;
   fontFamily: 'monospace';
   padding: '8px 30px';
 `
 
+
 const Login = ({ onSubmit }) => {
   const [token, setToken] = useState('')
 
   return (
-    <form>
+    <form onSubmit={e => onSubmit(e, token)}>
       <h1 >Git Repo Viewer</h1>
       <Input
         type="password"
@@ -38,7 +41,7 @@ const Login = ({ onSubmit }) => {
         }}
         placeholder="Paste your GitHub token"
       />
-      <Button onClick={onSubmit} css={{ width: '100%', fontFamily: 'monospace' }}>SUBMIT</Button>
+      <Button css={{ width: '100%', fontFamily: 'monospace' }}>SUBMIT</Button>
     </form>
   )
 }

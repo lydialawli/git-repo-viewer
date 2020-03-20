@@ -41,29 +41,10 @@ const client = new ApolloClient({
 
 
 
-
 function App() {
-  const [errorMsg, setErrorMsg] = useState('')
-
-  // fetch('https://api.github.com/graphql', {
-  //   method: 'POST',
-  //   headers: {
-  //     Authorization: `bearer ${accessToken}`,
-  //   },
-  //   body: JSON.stringify({
-  //     query: `
-  //   {
-  //     viewer {
-  //       name
-  //     }
-  //   }
-  //   `
-  //   })
-  // })
-  //   .then(res => res.json())
-  //   .then(json => {
-  //     console.log('-->', json)
-  //   })
+  // TODO: store state in redux
+  const [name, setName] = useState('')
+  const [repo, setRepo] = useState('')
 
   const handleSubmit = (event, token) => {
     event.preventDefault()
@@ -83,8 +64,8 @@ function App() {
       <Global />
       {accessToken ?
         <ApolloProvider client={client}>
-          <HeaderBar onLogout={logOut} />
-          <Content />
+          <HeaderBar onChangeName={n => setName(n)} onChangeRepo={r => setRepo(r)} onLogout={logOut} />
+          <Content name={name} repo={repo} />
         </ApolloProvider>
         :
         <Login onSubmit={handleSubmit} />

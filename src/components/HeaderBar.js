@@ -1,32 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
+import { Header, Avatar, LogoutText } from './Styles'
 
-const Header = styled('header')({
-  width: '100vw',
-  height: 80,
-  backgroundColor: 'rgb(210, 54, 105)',
-  display: 'flex',
-  justifyContent: 'flex-end',
-  alignItems: 'center'
-})
-
-const Avatar = styled('img')(({ height, width, src }) => ({
-  borderRadius: '50%',
-  width: width || 48,
-  height: height || 48,
-  backgroundColor: '#ccc',
-  overflow: 'hidden',
-  marginLeft: 20,
-  marginRight: 20,
-  src,
-}))
-
-const Logout = styled('h4')({
-  color: 'dark-grey',
-  cursor: 'pointer'
-})
 
 const GET_VIEWER = gql`
 	query {
@@ -41,7 +17,7 @@ const GET_VIEWER = gql`
 const HeaderBar = ({ onLogout }) => (
 
   <Header>
-    <Logout onClick={onLogout}>Logout</Logout>
+    <LogoutText onClick={onLogout}>Logout</LogoutText>
     <Query query={GET_VIEWER}>
       {({ loading, error, data }) => (
         <>

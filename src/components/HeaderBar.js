@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { Query } from 'react-apollo'
+import { gql } from 'apollo-boost'
 
 const Header = styled('header')({
   width: '100vw',
@@ -22,12 +23,37 @@ const Avatar = styled('img')(({ height, width, src }) => ({
   src,
 }))
 
+const Logout = styled('h4')({
+  color: 'dark-grey',
+  cursor: 'pointer'
+})
 
+const GET_VIEWER = gql`
+	query {
+		viewer {
+			avatarUrl
+			login
+			id
+		}
+	}
+`
 
 const HeaderBar = ({ onLogout }) => (
+
   <Header>
-    <div onClick={onLogout}>Logout</div>
-    <Avatar src={"https://avatars2.githubusercontent.com/u/33575398?u=a4ddbb7c85285c084370fff4cbcb05ffa02fa26c&v=4"} alt={'lydialawli'} />
+    <Logout onClick={onLogout}>Logout</Logout>
+    <Query query={GET_VIEWER}>
+      {({ loading, error, data }) => (
+        <>
+          {loading && <Avatar src={'https://www.iconninja.com/files/980/515/831/warrior-ninja-avatar-samurai-icon.svg'} />}
+          {error && <Avatar src={'https://www.iconninja.com/files/980/515/831/warrior-ninja-avatar-samurai-icon.svg'} />}
+          {data && data.viewer && (
+            <Avatar src={data.viewer.avatarUrl} alt={data.viewer.login} />
+          )}
+        </>
+      )}
+    </Query>
+
   </Header>
 )
 

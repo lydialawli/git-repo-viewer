@@ -11,7 +11,6 @@ const CardWrapper = styled('div')({
   border: '3px solid palevioletred',
   padding: '3px 15px 10px',
   borderRadius: 4,
-  cursor: 'pointer'
 })
 
 const TopContent = styled('div')(({ justifyContent }) => ({
@@ -34,12 +33,19 @@ const Tag = styled('span')({
   fontSize: 13,
 })
 
-
+const IconWrapper = styled('i')({
+  display: 'flex',
+  width: '100%',
+  paddingTop: 15,
+  justifyContent: 'center',
+  color: 'rgb(163,168,174)',
+  cursor: 'pointer'
+})
 
 const Card = ({ data, isPressed, cardPressed }) => {
 
   return (
-    <CardWrapper onClick={() => cardPressed(isPressed ? '' : data.id)}>
+    <CardWrapper>
       <TopContent>
         <h3>{data.title}</h3>
         <h4>{data.comments.totalCount} comments</h4>
@@ -48,13 +54,23 @@ const Card = ({ data, isPressed, cardPressed }) => {
       <Tag>by {data.author.login}</Tag>
       <Tag>{`created on ${moment(data.createdAt).format('LLL')}`}</Tag>
       {data.closedAt && <Tag>{`closed on ${moment(data.closedAt).format('LLL')}`}</Tag>}
-      {isPressed && data.comments.totalCount > 0 &&
-        data.comments.edges.map(c => {
-          return (
-            <Comment key={c.node.id} comment={c} />
-          )
-        })
+      {!isPressed &&
+        <IconWrapper onClick={() => cardPressed(data.id)} className="fas fa-chevron-down" />
       }
+      {isPressed &&
+        <>
+          < IconWrapper onClick={() => cardPressed(isPressed)} className="fas fa-chevron-up" />
+          {
+            data.comments.totalCount > 0 &&
+            data.comments.edges.map(c => {
+              return (
+                <Comment key={c.node.id} comment={c} />
+              )
+            })
+          }
+        </>
+      }
+
     </CardWrapper>
   )
 }

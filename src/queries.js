@@ -4,14 +4,14 @@ import { useQuery } from 'react-apollo'
 export const PULL_REQUESTS_QUERY = gql`
   query ($name: String!, $repo: String!) {
     repository(owner: $name, name: $repo) {
-      pullRequests(last: 20) {
+      pullRequests(last: 30) {
         edges {
           node {
             id
             title
             number
             url
-            comments(first: 10) {
+            comments(first: 20) {
               totalCount
               edges {
                 node {
@@ -41,7 +41,7 @@ export const PULL_REQUESTS_QUERY = gql`
 export const OPEN_ISSUES_QUERY = gql`
   query ($name: String!, $repo: String!) {
     repository(owner: $name, name: $repo) {
-      issues(last: 20, states: OPEN) {
+      issues(last: 30, states: OPEN) {
         edges {
           node {
             title
@@ -53,14 +53,7 @@ export const OPEN_ISSUES_QUERY = gql`
             author {
               login
             }
-            labels(first: 10) {
-              edges {
-                node {
-                  name
-                }
-              }
-            }
-            comments(first: 10) {
+            comments(first: 20) {
               totalCount
               edges {
                 node {
@@ -84,7 +77,7 @@ export const OPEN_ISSUES_QUERY = gql`
 export const CLOSED_ISSUES_QUERY = gql`
   query ($name: String!, $repo: String!) {
     repository(owner: $name, name: $repo) {
-      issues(last: 20, states: CLOSED) {
+      issues(last: 30, states: OPEN) {
         edges {
           node {
             title
@@ -96,14 +89,7 @@ export const CLOSED_ISSUES_QUERY = gql`
             author {
               login
             }
-            labels(first: 5) {
-              edges {
-                node {
-                  name
-                }
-              }
-            }
-            comments(first: 1) {
+            comments(first: 20) {
               totalCount
               edges {
                 node {

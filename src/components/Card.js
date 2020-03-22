@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import Comment from './Comment'
-import { GreyText } from './Styles'
+import { GreyText, InputContainer } from './Styles'
 
 const CardWrapper = styled('div')({
   width: '90%',
@@ -36,7 +36,6 @@ const Tag = styled('span')({
 
 const IconWrapper = styled('i')({
   display: 'flex',
-  // width: '100%',
   paddingTop: 15,
   justifyContent: 'center',
   color: 'rgb(163,168,174)',
@@ -65,7 +64,15 @@ const Card = ({ data, isPressed, cardPressed }) => {
       {isPressed &&
         <>
           < IconWrapper onClick={() => cardPressed('')} className="fas fa-chevron-up" />
-          <h4>Comments</h4>
+          <TopContent>
+            <h4>Comments</h4>
+            {data.comments.totalCount > 0 &&
+              < InputContainer
+                onChange={e => { }}
+                type='text'
+                placeholder={'search...'}
+              />}
+          </TopContent>
           {
             data.comments.totalCount === 0 ?
               <em>no comments</em>

@@ -66,11 +66,11 @@ export const ButtonSubmit = styled.button`
 `
 
 export const InputContainer = styled('input')({
-  width: '350px',
-  minWidth: '300px',
-  height: '20px',
+  minWidth: '50px',
+  height: '15px',
   borderRadius: 4,
   fontSize: 13,
+  border: '2px solid #ccc',
   fontWeight: 200,
   fontFamily: 'Rubik',
   padding: '8px 20px',

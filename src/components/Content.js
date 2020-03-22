@@ -3,7 +3,6 @@ import Search from './Search'
 import Tabs from './Tabs'
 import { ContentWrapper } from './Styles'
 import Section from './Section'
-import { PULL_REQUESTS_QUERY, CLOSED_ISSUES_QUERY, OPEN_ISSUES_QUERY } from './../queries'
 
 const Content = () => {
   const [name, setName] = useState('')
@@ -19,7 +18,6 @@ const Content = () => {
             <Section
               name={name}
               repoName={repoName}
-              queryType={PULL_REQUESTS_QUERY}
               type={'pullRequests'}
             />
           </div>
@@ -27,16 +25,14 @@ const Content = () => {
             <Section
               name={name}
               repoName={repoName}
-              queryType={OPEN_ISSUES_QUERY}
-              type={'issues'}
+              type={'open-issues'}
             />
           </div>
           <div label="Closed issues">
             <Section
               name={name}
               repoName={repoName}
-              queryType={CLOSED_ISSUES_QUERY}
-              type={'issues'}
+              type={'closed-issues'}
             />
           </div>
         </Tabs>}

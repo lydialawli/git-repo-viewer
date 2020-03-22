@@ -117,16 +117,32 @@ export const CLOSED_ISSUES_QUERY = gql`
   }
 `
 
-const useRepoDataQuery = (name, repository, queryType, options = {}) => {
+const useRepoDataQuery = (name, repository, type, options = {}) => {
   const queryOptions = {
     ...options,
     fetchPolicy: options.fetchPolicy || 'cache-and-network',
   }
 
+  const queryType = () => {
+    let query = ''
+    switch (type) {
+      case 'pullRequests':
+        query = PULL_REQUESTS_QUERY
+        break
+      case 'open-issues':
+        query = OPEN_ISSUES_QUERY
+        break
+      case 'closed-issues':
+        query = CLOSED_ISSUES_QUERY
+        break
+      default:
+    }
+    return query
+  }
 
   const {
     loading, error, data, refetch,
-  } = useQuery(queryType, {
+  } = useQuery(queryType(), {
     variables: {
       name: name,
       repo: repository

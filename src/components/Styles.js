@@ -35,6 +35,7 @@ export const GreyText = styled('span')(({ height, width, src, margin, loadingTex
   fontSize: loadingText ? 20 : 13,
   paddingLeft: 3,
   fontWeight: 200,
+  fontFamily: 'Rubik'
 }))
 
 export const Center = styled('div')({

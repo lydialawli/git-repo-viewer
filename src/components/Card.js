@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import Comment from './Comment'
+import { GreyText } from './Styles'
 
 const CardWrapper = styled('div')({
   width: '90%',
@@ -35,11 +36,11 @@ const Tag = styled('span')({
 
 const IconWrapper = styled('i')({
   display: 'flex',
-  width: '100%',
+  // width: '100%',
   paddingTop: 15,
   justifyContent: 'center',
   color: 'rgb(163,168,174)',
-  cursor: 'pointer'
+  cursor: 'pointer',
 })
 
 const Card = ({ data, isPressed, cardPressed }) => {
@@ -48,25 +49,39 @@ const Card = ({ data, isPressed, cardPressed }) => {
     <CardWrapper>
       <TopContent>
         <h3>{data.title}</h3>
-        <h4>{data.comments.totalCount} comments</h4>
+        <IconWrapper onClick={() => cardPressed(isPressed ? '' : data.id)} className="fas fa-comment-alt">
+          <GreyText>{data.comments.totalCount}</GreyText>
+        </IconWrapper>
       </TopContent>
       <Tag>#{data.number}</Tag>
       <Tag>by {data.author.login}</Tag>
       <Tag>{`created on ${moment(data.createdAt).format('LLL')}`}</Tag>
-      {data.closedAt && <Tag>{`closed on ${moment(data.closedAt).format('LLL')}`}</Tag>}
+      {data.closedAt &&
+        <Tag>{`closed on ${moment(data.closedAt).format('LLL')}`}</Tag>
+      }
       {!isPressed &&
         <IconWrapper onClick={() => cardPressed(data.id)} className="fas fa-chevron-down" />
       }
       {isPressed &&
         <>
-          < IconWrapper onClick={() => cardPressed(isPressed)} className="fas fa-chevron-up" />
+          < IconWrapper onClick={() => cardPressed('')} className="fas fa-chevron-up" />
+          <h4>Comments</h4>
           {
-            data.comments.totalCount > 0 &&
-            data.comments.edges.map(c => {
-              return (
-                <Comment key={c.node.id} comment={c} />
+            data.comments.totalCount === 0 ?
+              <em>no comments</em>
+              :
+              (
+                <>
+                  {data.comments.edges.map(c => {
+                    return (
+                      <Comment key={c.node.id} comment={c} />
+                    )
+                  })}
+                  {data.comments.totalCount > 4 &&
+                    < IconWrapper onClick={() => cardPressed('')} className="fas fa-chevron-up" />
+                  }
+                </>
               )
-            })
           }
         </>
       }

@@ -34,13 +34,14 @@ const Tag = styled('span')({
   fontSize: 13,
 })
 
-const IconWrapper = styled('i')({
+const IconWrapper = styled('i')(({ noPadding }) => ({
   display: 'flex',
-  paddingTop: 15,
+  paddingTop: noPadding ? 0 : 15,
+  paddingRight: 4,
   justifyContent: 'center',
   color: 'rgb(163,168,174)',
   cursor: 'pointer',
-})
+}))
 
 const Card = ({ data, isPressed, cardPressed }) => {
   const [filteredComments, setFilteredComments] = useState(data.comments.edges)
@@ -55,11 +56,13 @@ const Card = ({ data, isPressed, cardPressed }) => {
     setFilteredComments(filtered)
   }
 
+  console.log('--->', data)
+
   return (
     <CardWrapper>
       <TopContent>
-        <h3>{data.title}</h3>
-        <IconWrapper onClick={() => cardPressed(isPressed ? '' : data.id)} className="fas fa-comment-alt">
+        <h3 style={{ display: 'flex', flexDirection: 'row' }}><IconWrapper noPadding className="fas fa-code-branch" />{data.title}</h3>
+        <IconWrapper onClick={() => cardPressed(isPressed ? '' : data.id)} className="fas fa-comment">
           <GreyText>{data.comments.totalCount}</GreyText>
         </IconWrapper>
       </TopContent>

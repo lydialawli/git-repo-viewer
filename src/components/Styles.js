@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Header = styled('header')({
   width: '100vw',
-  height: 80,
+  height: 60,
   backgroundColor: 'rgb(210, 54, 105)',
   display: 'flex',
   justifyContent: 'flex-end',
@@ -41,14 +41,15 @@ export const ButtonSubmit = styled.button`
   }
 `
 
-export const InputContainer = styled.input`
-  width: 300px;
-  height: 30px;
-  borderRadius: 4;
-  fontSize: 18;
-  fontFamily: 'monospace';
-  padding: '8px 30px';
-`
+export const InputContainer = styled('input')({
+  width: '350px',
+  minWidth: '300px',
+  height: '30px',
+  borderRadius: 4,
+  fontSize: 18,
+  fontFamily: 'monospace',
+  padding: '8px 20px',
+})
 
 export const ErrorMsg = styled.text`
   color: red;
@@ -56,9 +57,9 @@ export const ErrorMsg = styled.text`
 
 
 export const SearchWrapper = styled('div')({
-  width: '60vw',
+  width: '600px',
   height: 80,
   display: 'flex',
   justifyContent: 'flex-end',
-  alignItems: 'center'
+  alignItems: 'center',
 })

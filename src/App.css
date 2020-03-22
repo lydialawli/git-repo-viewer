@@ -1,18 +1,9 @@
-.searchBar {
-  width: 90vw;
-  border: 1px solid #c5c5c5;
-  border-radius: 2px;
-  cursor: pointer;
-  background-color: transparent;
-  box-sizing: border-box;
-  padding: 10px 50px;
-  font-weight: 300;
-  font-size: 15px;
-}
-
-.tab-list {
-  border-bottom: 1px solid #ccc;
-  padding-left: 30;
+.layout {
+  display: flex;
+  margin: auto;
+  height: 100vh;
+  flex-direction: column;
+  /* background-color: bisque; */
 }
 
 .tab-list-item {

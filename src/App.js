@@ -10,19 +10,20 @@ import Login from './components/Login'
 import { createGlobalStyle } from 'styled-components'
 import 'styled-components/macro'
 
-const Global = createGlobalStyle({
-  body: {
-    backgroundColor: '#fff',
-    display: 'flex',
-    justifyContent: 'center',
-    color: '#444',
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto"',
-    margin: 0,
-  },
-  '*': {
-    boxSizing: 'border-box',
-  },
-})
+// const Global = createGlobalStyle({
+//   body: {
+//     backgroundColor: '#fff',
+//     display: 'flex',
+//     justifyContent: 'center',
+//     color: '#444',
+//     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto"',
+//     margin: 0,
+//     padding: 0
+//   },
+//   '*': {
+//     boxSizing: 'border-box',
+//   },
+// })
 
 const accessToken = localStorage.getItem('token')
 
@@ -60,8 +61,8 @@ function App() {
   }
 
   return (
-    <>
-      <Global />
+    <div className='layout'>
+      {/* <Global /> */}
       {accessToken ?
         <ApolloProvider client={client}>
           <HeaderBar onChangeName={n => setName(n)} onChangeRepo={r => setRepo(r)} onLogout={logOut} />
@@ -70,7 +71,7 @@ function App() {
         :
         <Login onSubmit={handleSubmit} />
       }
-    </>
+    </div>
   )
 }
 

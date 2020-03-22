@@ -6,7 +6,6 @@ const Search = () => {
   const [name, setName] = useState('')
   const [repo, setRepo] = useState('')
 
-  console.log({ name, repo })
   return (
     <SearchWrapper >
       <InputContainer onChange={e => {

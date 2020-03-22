@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-
 import Tab from './Tab'
+import { TabWrapper, TabList } from './Styles'
 
 const Tabs = ({ children }) => {
   const [activeTab, setActiveTab] = useState(children[0].props.label)
@@ -11,8 +11,8 @@ const Tabs = ({ children }) => {
   }
 
   return (
-    <div className="tabs">
-      <ol className="tab-list">
+    <TabWrapper>
+      <TabList>
         {children.map((child) => {
           const { label } = child.props
 
@@ -25,14 +25,14 @@ const Tabs = ({ children }) => {
             />
           )
         })}
-      </ol>
+      </TabList>
       <div className="tab-content">
         {children.map((child) => {
           if (child.props.label !== activeTab) return undefined
           return child.props.children
         })}
       </div>
-    </div>
+    </TabWrapper>
   )
 }
 

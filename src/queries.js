@@ -13,6 +13,7 @@ export const GET_REPO_DATA_QUERY = gql`
               login
             }
             createdAt
+            closedAt
             merged
           }
         }

@@ -5,7 +5,7 @@ import { ContentWrapper } from './Styles'
 import Section from './Section'
 
 const Content = () => {
-  const [userInput, setUserInput] = useState({ name: '', repoName: '' })
+  const [userInput, setUserInput] = useState({ name: 'octocat', repoName: 'Hello-World' })
 
   return (
     <ContentWrapper>

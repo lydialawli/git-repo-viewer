@@ -12,10 +12,13 @@ export const PULL_REQUESTS_QUERY = gql`
             number
             url
             comments(first: 10) {
+              totalCount
               edges {
                 node {
+                  id
                   author {
                     login
+                    avatarUrl
                   }
                   body
                   createdAt
@@ -50,16 +53,18 @@ export const OPEN_ISSUES_QUERY = gql`
             author {
               login
             }
-            labels(first: 5) {
+            labels(first: 10) {
               edges {
                 node {
                   name
                 }
               }
             }
-            comments(first: 1) {
+            comments(first: 10) {
+              totalCount
               edges {
                 node {
+                  id
                   author {
                     login
                     avatarUrl
@@ -99,8 +104,10 @@ export const CLOSED_ISSUES_QUERY = gql`
               }
             }
             comments(first: 1) {
+              totalCount
               edges {
                 node {
+                  id
                   author {
                     login
                     avatarUrl

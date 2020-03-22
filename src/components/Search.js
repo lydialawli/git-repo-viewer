@@ -12,13 +12,17 @@ const Search = ({ onSubmitSearch }) => {
 
   return (
     <SearchWrapper >
-      <InputContainer onChange={e => {
-        setName(e.target.value)
-      }} type='text' placeholder={'name...'} />
+      <InputContainer
+        onChange={e => { setName(e.target.value) }}
+        type='text'
+        placeholder={'name...'}
+      />
       <h2 style={{ marginLeft: 10, marginRight: 10 }}>/</h2>
-      <InputContainer onChange={e => {
-        setRepoName(e.target.value)
-      }} type='text' placeholder={'repo...'} />
+      <InputContainer
+        onChange={e => { setRepoName(e.target.value) }}
+        type='text'
+        placeholder={'repo...'}
+      />
       <ButtonSubmit onClick={handleSubmit}>SEARCH</ButtonSubmit>
     </SearchWrapper>
   )

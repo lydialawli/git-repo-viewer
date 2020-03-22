@@ -47,7 +47,6 @@ function App() {
 
   return (
     <div className='layout'>
-      {/* <Global /> */}
       {accessToken ?
         <ApolloProvider client={client}>
           <HeaderBar onChangeName={n => setName(n)} onChangeRepo={r => setRepo(r)} onLogout={logOut} />

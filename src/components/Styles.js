@@ -19,14 +19,14 @@ export const ContentWrapper = styled('div')({
   background: 'LigthGreen',
 })
 
-export const Avatar = styled('img')(({ height, width, src }) => ({
+export const Avatar = styled('img')(({ height, width, src, margin }) => ({
   borderRadius: '50%',
   width: width || 48,
   height: height || 48,
   backgroundColor: '#ccc',
   overflow: 'hidden',
-  marginLeft: 20,
-  marginRight: 20,
+  marginLeft: margin || 20,
+  marginRight: margin || 20,
   src,
 }))
 
@@ -47,6 +47,7 @@ export const ButtonSubmit = styled.button`
   &:hover {
     background-color: palevioletred;
     color: white;
+    cursor: pointer;
   }
 `
 

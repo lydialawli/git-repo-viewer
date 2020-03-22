@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { Avatar, GreyText } from './Styles'
+import Comment from './Comment'
 
 const CardWrapper = styled('div')({
   width: '90%',
@@ -12,7 +12,6 @@ const CardWrapper = styled('div')({
   padding: '3px 15px 10px',
   borderRadius: 4,
   cursor: 'pointer'
-  // boxShadow: ' 2px 1px 10px 0.5px rgb(231, 231, 231)',
 })
 
 const TopContent = styled('div')(({ justifyContent }) => ({
@@ -35,29 +34,12 @@ const Tag = styled('span')({
   fontSize: 13,
 })
 
-const CommentContainer = styled('div')({
-  display: 'flex',
-  boxShadow: ' 2px 1px 10px 0.5px rgb(231, 231, 231)',
-  borderRadius: 5,
-  padding: 10,
-  fontSize: 13,
-  fontFamily: 'Rubik',
-  marginTop: 10,
-  flexDirection: 'column',
-  transition: 'all .3s ease-in-out'
-})
-
-const CommentBody = styled('p')({
-  fontSize: 13,
-  paddingLeft: 40
-})
 
 
-const Card = ({ data }) => {
-  console.log('data-->', data.comments)
+const Card = ({ data, isPressed, cardPressed }) => {
 
   return (
-    <CardWrapper>
+    <CardWrapper onClick={() => cardPressed(isPressed ? '' : data.id)}>
       <TopContent>
         <h3>{data.title}</h3>
         <h4>{data.comments.totalCount} comments</h4>
@@ -66,17 +48,10 @@ const Card = ({ data }) => {
       <Tag>by {data.author.login}</Tag>
       <Tag>{`created on ${moment(data.createdAt).format('LLL')}`}</Tag>
       {data.closedAt && <Tag>{`closed on ${moment(data.closedAt).format('LLL')}`}</Tag>}
-      {data.comments.totalCount > 0 &&
+      {isPressed && data.comments.totalCount > 0 &&
         data.comments.edges.map(c => {
           return (
-            <CommentContainer key={c.id}>
-              <TopContent justifyContent='flex-start'>
-                <Avatar margin={10} width={20} height={20} src={c.node.author.avatarUrl} />
-                <span>{c.node.author.login}</span>
-                <GreyText>commented on {moment(c.node.createdAt).format('LLL')}</GreyText>
-              </TopContent>
-              <CommentBody>{c.node.body}</CommentBody>
-            </CommentContainer>
+            <Comment key={c.node.id} comment={c} />
           )
         })
       }
@@ -87,6 +62,7 @@ const Card = ({ data }) => {
 
 Card.propTypes = {
   data: PropTypes.object.isRequired,
+  isPressed: PropTypes.bool.isRequired,
 }
 
 export default Card

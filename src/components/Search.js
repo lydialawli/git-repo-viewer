@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputContainer, ButtonSubmit, SearchWrapper, GreyText } from './Styles'
+import { InputContainer, ButtonSubmit, SearchWrapper } from './Styles'
 
 
 const Search = ({ onSubmitSearch }) => {

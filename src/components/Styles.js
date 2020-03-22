@@ -30,9 +30,9 @@ export const Avatar = styled('img')(({ height, width, src, margin }) => ({
   src,
 }))
 
-export const GreyText = styled('span')(({ height, width, src, margin, loading }) => ({
-  color: loading ? 'rgb(154,154,154)' : 'rgb(163,168,174)',
-  fontSize: loading ? 20 : 13,
+export const GreyText = styled('span')(({ height, width, src, margin, loadingText }) => ({
+  color: loadingText ? 'rgb(154,154,154)' : 'rgb(163,168,174)',
+  fontSize: loadingText ? 20 : 13,
   paddingLeft: 3,
   fontWeight: 200,
 }))

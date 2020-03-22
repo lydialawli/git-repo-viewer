@@ -2,14 +2,12 @@ import React, { useState } from 'react'
 import { InputContainer, ButtonSubmit, SearchWrapper } from './Styles'
 
 
-const Search = ({ onChangeName, onChangeRepoName }) => {
-  const [name, setName] = useState('octocat')
-  const [repoName, setRepoName] = useState('Hello-World')
+const Search = ({ onSubmitSearch }) => {
+  const [name, setName] = useState('')
+  const [repoName, setRepoName] = useState('')
 
   const handleSubmit = () => {
-    console.log('yeayeya')
-    onChangeName(name)
-    onChangeRepoName(repoName)
+    onSubmitSearch({ name: name, repoName: repoName })
   }
 
   return (

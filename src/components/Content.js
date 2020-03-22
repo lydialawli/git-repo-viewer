@@ -5,33 +5,32 @@ import { ContentWrapper } from './Styles'
 import Section from './Section'
 
 const Content = () => {
-  const [name, setName] = useState('')
-  const [repoName, setRepoName] = useState('')
+  const [userInput, setUserInput] = useState({ name: '', repoName: '' })
 
   return (
     <ContentWrapper>
-      <Search onChangeName={n => { setName(n) }} onChangeRepoName={r => { setRepoName(r) }} />
+      <Search onSubmitSearch={x => { setUserInput(x) }} />
 
-      {name && repoName &&
+      {userInput && !!userInput.name && !!userInput.repoName &&
         <Tabs>
           <div label="Pull requests">
             <Section
-              name={name}
-              repoName={repoName}
+              name={userInput.name}
+              repoName={userInput.repoName}
               type={'pullRequests'}
             />
           </div>
           <div label="Open issues">
             <Section
-              name={name}
-              repoName={repoName}
+              name={userInput.name}
+              repoName={userInput.repoName}
               type={'open-issues'}
             />
           </div>
           <div label="Closed issues">
             <Section
-              name={name}
-              repoName={repoName}
+              name={userInput.name}
+              repoName={userInput.repoName}
               type={'closed-issues'}
             />
           </div>

@@ -7,11 +7,8 @@ import './App.css'
 import HeaderBar from './components/HeaderBar'
 import Content from './components/Content'
 import Login from './components/Login'
-import 'styled-components/macro'
-
 
 const accessToken = localStorage.getItem('token')
-
 
 const httpLink = new HttpLink({
   uri: 'https://api.github.com/graphql',
@@ -28,7 +25,6 @@ const client = new ApolloClient({
 
 
 function App() {
-  // TODO: store state in redux
   const [name, setName] = useState('')
   const [repo, setRepo] = useState('')
 

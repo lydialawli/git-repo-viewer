@@ -20,7 +20,9 @@ const Section = ({ name, repoName, type }) => {
             return <Card cardPressed={(id) => setPressedCard(id)} isPressed={pressedCard === data.node.id} key={data.node.id} data={data.node} />
           })
           :
-          <em>No {type} found</em>
+          <Center style={{ height: '50vh' }}>
+            <em>No {type} found</em>
+          </Center>
       )
   )
 }

@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import Search from './Search'
 import Tabs from './Tabs'
-import { ContentWrapper } from './Styles'
+import { ContentWrapper, Center, GreyText } from './Styles'
 import Section from './Section'
 
 const Content = () => {
-  const [userInput, setUserInput] = useState({ name: 'octocat', repoName: 'Hello-World' })
+  const [userInput, setUserInput] = useState({ name: '', repoName: '' })
+
+  const repos = [
+    'learn-anything/learn-anything',
+    'relic-toolkit/relic',
+    'ahmadawais/corona-cli',
+    'webkreation/pausen-monster',
+    'nomiclabs / buidler'
+  ]
 
   return (
     <ContentWrapper>
       <Search onSubmitSearch={x => { setUserInput(x) }} />
 
-      {userInput && !!userInput.name && !!userInput.repoName &&
+      {userInput && !!userInput.name && !!userInput.repoName ?
         <Tabs>
           <div label="Pull requests">
             <Section
@@ -34,9 +42,17 @@ const Content = () => {
               type={'closed-issues'}
             />
           </div>
-        </Tabs>}
+        </Tabs>
+        :
+        <Center style={{ height: '50vh' }}>
+          <GreyText loadingText>
+            Some random example repo's to test this app:<br />
+            {repos.map(r => <li>{r}</li>)}
+          </GreyText>
+        </Center>
+      }
       {/* } */}
-    </ContentWrapper>
+    </ContentWrapper >
   )
 }
 

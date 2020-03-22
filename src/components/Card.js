@@ -1,53 +1,21 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import Comment from './Comment'
-import { GreyText, InputContainer } from './Styles'
+import {
+  GreyText,
+  InputContainer,
+  TopContent,
+  CardWrapper,
+  Tag,
+  IconWrapper
+} from './Styles'
 
-const CardWrapper = styled('div')({
-  width: '90%',
-  minHeight: '70px',
-  margin: '30px 5px 30px 30px',
-  border: '3px solid palevioletred',
-  padding: '3px 15px 10px',
-  borderRadius: 4,
-})
-
-const TopContent = styled('div')(({ justifyContent }) => ({
-  display: 'flex',
-  width: '100%',
-  justifyContent: justifyContent || 'space-between',
-  flexDirection: 'row',
-  paddingTop: 10,
-  fontWeight: 500,
-}))
-
-
-const Tag = styled('span')({
-  display: 'inline-block',
-  margin: '4px 4px 4px 0',
-  backgroundColor: '#eee',
-  borderRadius: 3,
-  padding: '2px 6px 3px',
-  color: '#666',
-  fontSize: 13,
-})
-
-const IconWrapper = styled('i')(({ noPadding }) => ({
-  display: 'flex',
-  paddingTop: noPadding ? 0 : 15,
-  paddingRight: 4,
-  justifyContent: 'center',
-  color: 'rgb(163,168,174)',
-  cursor: 'pointer',
-}))
 
 const Card = ({ data, isPressed, cardPressed }) => {
   const [filteredComments, setFilteredComments] = useState(data.comments.edges)
 
   const filterSearch = (text) => {
-
     let filtered = data.comments.edges.filter(e =>
       e.node.body.toUpperCase().includes(text.toUpperCase()) ||
       e.node.author.login.toUpperCase().includes(text.toUpperCase()) ||
@@ -55,8 +23,6 @@ const Card = ({ data, isPressed, cardPressed }) => {
     )
     setFilteredComments(filtered)
   }
-
-  console.log('--->', data)
 
   return (
     <CardWrapper>

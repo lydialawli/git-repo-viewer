@@ -8,8 +8,8 @@ const Content = () => {
   const [userInput, setUserInput] = useState({ name: '', repoName: '' })
 
   const repos = [
-    'learn-anything/learn-anything',
     'relic-toolkit/relic',
+    'ethereum/go-ethereum',
     'ahmadawais/corona-cli',
     'webkreation/pausen-monster',
     'nomiclabs / buidler'

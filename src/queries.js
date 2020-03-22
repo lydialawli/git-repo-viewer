@@ -77,7 +77,7 @@ export const OPEN_ISSUES_QUERY = gql`
 export const CLOSED_ISSUES_QUERY = gql`
   query ($name: String!, $repo: String!) {
     repository(owner: $name, name: $repo) {
-      issues(last: 30, states: OPEN) {
+      issues(last: 30, states: CLOSED) {
         edges {
           node {
             title

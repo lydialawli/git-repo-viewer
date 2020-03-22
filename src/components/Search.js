@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import { InputContainer, ButtonSubmit, SearchWrapper } from './Styles'
 
 
-const Search = () => {
-  const [name, setName] = useState('')
-  const [repo, setRepo] = useState('')
-  console.log({ name, repo })
+const Search = ({ onChangeName, onChangeRepoName }) => {
+  const [name, setName] = useState('octocat')
+  const [repoName, setRepoName] = useState('Hello-World')
+
+  const handleSubmit = () => {
+    console.log('yeayeya')
+    onChangeName(name)
+    onChangeRepoName(repoName)
+  }
 
   return (
     <SearchWrapper >
@@ -14,9 +19,9 @@ const Search = () => {
       }} type='text' placeholder={'name...'} />
       <h2 style={{ marginLeft: 10, marginRight: 10 }}>/</h2>
       <InputContainer onChange={e => {
-        setRepo(e.target.value)
+        setRepoName(e.target.value)
       }} type='text' placeholder={'repo...'} />
-      <ButtonSubmit>SEARCH</ButtonSubmit>
+      <ButtonSubmit onClick={handleSubmit}>SEARCH</ButtonSubmit>
     </SearchWrapper>
   )
 }

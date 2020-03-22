@@ -1,10 +1,10 @@
 import { gql } from 'apollo-boost'
 import { useQuery } from 'react-apollo'
 
-export const GET_REPO_DATA_QUERY = gql`
+export const PULL_REQUESTS_QUERY = gql`
   query ($name: String!, $repo: String!) {
     repository(owner: $name, name: $repo) {
-      pullRequests(last: 5) {
+      pullRequests(last: 20) {
         edges {
           node {
             id
@@ -31,6 +31,54 @@ export const GET_REPO_DATA_QUERY = gql`
           }
         }
       }
+    }
+  }
+`
+
+export const OPEN_ISSUES_QUERY = gql`
+  query ($name: String!, $repo: String!) {
+    repository(owner: $name, name: $repo) {
+      issues(last: 20, states: OPEN) {
+        edges {
+          node {
+            title
+            id
+            url
+            number
+            createdAt
+            closedAt
+            author {
+              login
+            }
+            labels(first: 5) {
+              edges {
+                node {
+                  name
+                }
+              }
+            }
+            comments(first: 1) {
+              edges {
+                node {
+                  author {
+                    login
+                    avatarUrl
+                  }
+                  body
+                  createdAt
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export const CLOSED_ISSUES_QUERY = gql`
+  query ($name: String!, $repo: String!) {
+    repository(owner: $name, name: $repo) {
       issues(last: 20, states: CLOSED) {
         edges {
           node {
@@ -69,15 +117,16 @@ export const GET_REPO_DATA_QUERY = gql`
   }
 `
 
-const useRepoDataQuery = (name, repository, options = {}) => {
+const useRepoDataQuery = (name, repository, queryType, options = {}) => {
   const queryOptions = {
     ...options,
     fetchPolicy: options.fetchPolicy || 'cache-and-network',
   }
 
+
   const {
     loading, error, data, refetch,
-  } = useQuery(GET_REPO_DATA_QUERY, {
+  } = useQuery(queryType, {
     variables: {
       name: name,
       repo: repository

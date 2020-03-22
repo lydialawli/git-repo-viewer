@@ -1,45 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Search from './Search'
 import Tabs from './Tabs'
-import useRepoDataQuery from './../queries'
-import Card from './Card'
 import { ContentWrapper } from './Styles'
+import Section from './Section'
+import { PULL_REQUESTS_QUERY, CLOSED_ISSUES_QUERY, OPEN_ISSUES_QUERY } from './../queries'
 
 const Content = () => {
-  // TODO: search input result should arrive at this component, to query repo data
-  const { repo } = useRepoDataQuery('octocat', 'Hello-World')
-  console.log('---->', repo)
+  const [name, setName] = useState('')
+  const [repoName, setRepoName] = useState('')
 
   return (
     <ContentWrapper>
-      <Search />
-      {!!repo && repo.loading ?
-        <em>loading...</em>
-        :
+      <Search onChangeName={n => { setName(n) }} onChangeRepoName={r => { setRepoName(r) }} />
+
+      {name && repoName &&
         <Tabs>
           <div label="Pull requests">
-            {repo && repo.pullRequests ?
-              repo.pullRequests.edges.map(pR => {
-                return <Card key={pR.node.id} data={pR.node} />
-              })
-              :
-              <em>No pull requests found</em>
-            }
+            <Section
+              name={name}
+              repoName={repoName}
+              queryType={PULL_REQUESTS_QUERY}
+              type={'pullRequests'}
+            />
           </div>
           <div label="Open issues">
-            {repo && repo.issues ?
-              repo.issues.edges.map(issue => {
-                return <Card key={issue.node.id} data={issue.node} />
-              })
-              :
-              <em>No open issues found</em>
-            }
+            <Section
+              name={name}
+              repoName={repoName}
+              queryType={OPEN_ISSUES_QUERY}
+              type={'issues'}
+            />
           </div>
           <div label="Closed issues">
-            <em>No closed issues found</em>
+            <Section
+              name={name}
+              repoName={repoName}
+              queryType={CLOSED_ISSUES_QUERY}
+              type={'issues'}
+            />
           </div>
-        </Tabs>
-      }
+        </Tabs>}
+      {/* } */}
     </ContentWrapper>
   )
 }

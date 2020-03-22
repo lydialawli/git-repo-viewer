@@ -16,7 +16,7 @@ export const ContentWrapper = styled('div')({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  background: 'LigthGreen'
+  background: 'LigthGreen',
 })
 
 export const Avatar = styled('img')(({ height, width, src }) => ({
@@ -86,16 +86,3 @@ export const TabList = styled('ol')({
   borderBottom: '1px solid #ccc',
   paddingLeft: 30,
 })
-
-//   .tab - list - item {
-//     display: inline-block;
-// list - style: none;
-// margin - bottom: -1px;
-// padding: 0.5rem 0.75rem;
-// }
-
-// .tab - list - active {
-//   background - color: white;
-//   border: solid #ccc;
-//   border - width: 1px 1px 0 1px;
-// }

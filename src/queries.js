@@ -7,8 +7,21 @@ export const GET_REPO_DATA_QUERY = gql`
       pullRequests(last: 5) {
         edges {
           node {
+            id
+            title
             number
             url
+            comments(first: 10) {
+              edges {
+                node {
+                  author {
+                    login
+                  }
+                  body
+                  createdAt
+                }
+              }
+            }
             author {
               login
             }
@@ -22,11 +35,30 @@ export const GET_REPO_DATA_QUERY = gql`
         edges {
           node {
             title
+            id
             url
+            number
+            createdAt
+            closedAt
+            author {
+              login
+            }
             labels(first: 5) {
               edges {
                 node {
                   name
+                }
+              }
+            }
+            comments(first: 1) {
+              edges {
+                node {
+                  author {
+                    login
+                    avatarUrl
+                  }
+                  body
+                  createdAt
                 }
               }
             }

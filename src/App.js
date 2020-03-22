@@ -7,23 +7,8 @@ import './App.css'
 import HeaderBar from './components/HeaderBar'
 import Content from './components/Content'
 import Login from './components/Login'
-import { createGlobalStyle } from 'styled-components'
 import 'styled-components/macro'
 
-// const Global = createGlobalStyle({
-//   body: {
-//     backgroundColor: '#fff',
-//     display: 'flex',
-//     justifyContent: 'center',
-//     color: '#444',
-//     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto"',
-//     margin: 0,
-//     padding: 0
-//   },
-//   '*': {
-//     boxSizing: 'border-box',
-//   },
-// })
 
 const accessToken = localStorage.getItem('token')
 

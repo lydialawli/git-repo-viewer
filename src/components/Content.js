@@ -19,13 +19,21 @@ const Content = () => {
         <Tabs>
           <div label="Pull requests">
             {repo && repo.pullRequests ?
-              <Card pullReq={repo.pullRequests.edges}></Card>
+              repo.pullRequests.edges.map(pR => {
+                return <Card key={pR.node.id} data={pR.node} />
+              })
               :
               <em>No pull requests found</em>
             }
           </div>
           <div label="Open issues">
-            <em>No open issues found</em>
+            {repo && repo.issues ?
+              repo.issues.edges.map(issue => {
+                return <Card key={issue.node.id} data={issue.node} />
+              })
+              :
+              <em>No open issues found</em>
+            }
           </div>
           <div label="Closed issues">
             <em>No closed issues found</em>

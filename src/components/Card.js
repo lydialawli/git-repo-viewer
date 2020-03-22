@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { Avatar } from './Styles'
+import { Avatar, GreyText } from './Styles'
 
 const CardWrapper = styled('div')({
   width: '90%',
@@ -52,12 +52,6 @@ const CommentBody = styled('p')({
   paddingLeft: 40
 })
 
-const MetaDataText = styled('span')({
-  color: 'rgb(163,168,174)',
-  fontSize: 13,
-  paddingLeft: 3,
-  fontWeight: 200,
-})
 
 const Card = ({ data }) => {
   console.log('data-->', data.comments)
@@ -79,7 +73,7 @@ const Card = ({ data }) => {
               <TopContent justifyContent='flex-start'>
                 <Avatar margin={10} width={20} height={20} src={c.node.author.avatarUrl} />
                 <span>{c.node.author.login}</span>
-                <MetaDataText>commented on {moment(c.node.createdAt).format('LLL')}</MetaDataText>
+                <GreyText>commented on {moment(c.node.createdAt).format('LLL')}</GreyText>
               </TopContent>
               <CommentBody>{c.node.body}</CommentBody>
             </CommentContainer>

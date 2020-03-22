@@ -30,6 +30,19 @@ export const Avatar = styled('img')(({ height, width, src, margin }) => ({
   src,
 }))
 
+export const GreyText = styled('span')(({ height, width, src, margin, loading }) => ({
+  color: loading ? 'rgb(154,154,154)' : 'rgb(163,168,174)',
+  fontSize: loading ? 20 : 13,
+  paddingLeft: 3,
+  fontWeight: 200,
+}))
+
+export const Center = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+})
+
 export const LogoutText = styled('h4')({
   color: 'dark-grey',
   cursor: 'pointer'
@@ -54,10 +67,11 @@ export const ButtonSubmit = styled.button`
 export const InputContainer = styled('input')({
   width: '350px',
   minWidth: '300px',
-  height: '30px',
+  height: '20px',
   borderRadius: 4,
-  fontSize: 18,
-  fontFamily: 'monospace',
+  fontSize: 13,
+  fontWeight: 200,
+  fontFamily: 'Rubik',
   padding: '8px 20px',
 })
 

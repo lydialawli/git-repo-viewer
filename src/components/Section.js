@@ -1,6 +1,7 @@
 import React from 'react'
 import useRepoDataQuery from './../queries'
 import Card from './Card'
+import { GreyText, Center } from './Styles'
 
 const Section = ({ name, repoName, type }) => {
   const queryType = type === 'pullRequests' ? type : 'issues'
@@ -8,7 +9,9 @@ const Section = ({ name, repoName, type }) => {
 
   return (
     !!repo && repo.loading ?
-      <em>loading...</em>
+      <Center style={{ height: '50vh' }}>
+        <GreyText loading>loading...</GreyText>
+      </Center>
       :
       (
         repo && repo[queryType] ?

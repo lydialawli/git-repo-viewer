@@ -62,6 +62,7 @@ export const ButtonSubmit = styled.button`
     background-color: palevioletred;
     color: white;
     cursor: pointer;
+    text-decoration: none;
   }
 `
 
@@ -74,6 +75,7 @@ export const InputContainer = styled('input')({
   fontWeight: 200,
   fontFamily: 'Rubik',
   padding: '8px 20px',
+  textDecoration: 'none',
 })
 
 export const ErrorMsg = styled.text`

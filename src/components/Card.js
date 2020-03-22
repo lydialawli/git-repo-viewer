@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import moment from 'moment'
@@ -43,6 +43,17 @@ const IconWrapper = styled('i')({
 })
 
 const Card = ({ data, isPressed, cardPressed }) => {
+  const [filteredComments, setFilteredComments] = useState(data.comments.edges)
+
+  const filterSearch = (text) => {
+
+    let filtered = data.comments.edges.filter(e =>
+      e.node.body.toUpperCase().includes(text.toUpperCase()) ||
+      e.node.author.login.toUpperCase().includes(text.toUpperCase()) ||
+      moment(e.node.createdAt).format('LLL').toUpperCase().includes(text.toUpperCase())
+    )
+    setFilteredComments(filtered)
+  }
 
   return (
     <CardWrapper>
@@ -68,7 +79,7 @@ const Card = ({ data, isPressed, cardPressed }) => {
             <h4>Comments</h4>
             {data.comments.totalCount > 0 &&
               < InputContainer
-                onChange={e => { }}
+                onChange={e => { filterSearch(e.target.value) }}
                 type='text'
                 placeholder={'search...'}
               />}
@@ -79,7 +90,7 @@ const Card = ({ data, isPressed, cardPressed }) => {
               :
               (
                 <>
-                  {data.comments.edges.map(c => {
+                  {filteredComments.map(c => {
                     return (
                       <Comment key={c.node.id} comment={c} />
                     )

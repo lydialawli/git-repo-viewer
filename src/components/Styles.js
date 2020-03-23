@@ -132,7 +132,6 @@ export const CommentContainer = styled('div')({
   fontFamily: 'Rubik',
   marginTop: 10,
   flexDirection: 'column',
-  transition: 'all .3s ease-in-out',
   background: 'white'
 })
 

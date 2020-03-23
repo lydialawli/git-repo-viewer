@@ -5,7 +5,7 @@ import { ContentWrapper, Center, GreyText } from './Styles'
 import Section from './Section'
 
 const Content = () => {
-  const [userInput, setUserInput] = useState({ name: 'ethereum', repoName: 'go-ethereum' })
+  const [userInput, setUserInput] = useState({ name: '', repoName: '' })
 
   const exampleRepos = [
     'relic-toolkit/relic',

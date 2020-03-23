@@ -14,7 +14,8 @@ export const Header = styled('header')({
   backgroundColor: 'rgb(210, 54, 105)',
   display: 'flex',
   justifyContent: 'flex-end',
-  alignItems: 'center'
+  alignItems: 'center',
+  boxShadow: ' 2px 1px 10px 3px rgb(231, 231, 231)'
 })
 
 export const ContentWrapper = styled('div')({

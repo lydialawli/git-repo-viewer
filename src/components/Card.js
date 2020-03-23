@@ -24,6 +24,12 @@ const Card = ({ data, isPressed, cardPressed }) => {
     setFilteredComments(filtered)
   }
 
+  const openGithubLink = () => {
+    if (data.url) {
+      window.open(data.url)
+    }
+  }
+
   return (
     <CardWrapper>
       <TopContent>
@@ -38,6 +44,13 @@ const Card = ({ data, isPressed, cardPressed }) => {
       {data.closedAt &&
         <Tag>{`closed on ${moment(data.closedAt).format('LLL')}`}</Tag>
       }
+      <Tag>
+        <IconWrapper
+          noPadding
+          onClick={openGithubLink}
+          className="fab fa-github"
+        />
+      </Tag>
       {!isPressed &&
         <IconWrapper onClick={() => cardPressed(data.id)} className="fas fa-chevron-down" />
       }
@@ -81,6 +94,7 @@ const Card = ({ data, isPressed, cardPressed }) => {
 Card.propTypes = {
   data: PropTypes.object.isRequired,
   isPressed: PropTypes.bool.isRequired,
+  cardPressed: PropTypes.func.isRequired,
 }
 
 export default Card

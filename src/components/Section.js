@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { useRepoDataQuery } from './../queries'
 import Card from './Card'
 import { GreyText, Center } from './Styles'
@@ -26,5 +27,12 @@ const Section = ({ name, repoName, type }) => {
       )
   )
 }
+
+Section.propTypes = {
+  name: PropTypes.string.isRequired,
+  repoName: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+}
+
 
 export default Section

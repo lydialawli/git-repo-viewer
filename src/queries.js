@@ -132,7 +132,6 @@ export const useViewerQuery = () => {
     loading,
     error,
   }
-
   return { res }
 }
 

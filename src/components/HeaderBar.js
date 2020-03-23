@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Header, Avatar, LogoutText } from './Styles'
 import { useViewerQuery } from './../queries'
 
@@ -19,5 +20,10 @@ const HeaderBar = ({ onLogout }) => {
     </Header>
   )
 }
+
+HeaderBar.propTypes = {
+  onLogout: PropTypes.func.isRequired,
+}
+
 
 export default HeaderBar

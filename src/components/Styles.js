@@ -6,6 +6,7 @@ export const LoginWrapper = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  background: '#F3F0ED'
 })
 
 export const Header = styled('header')({
@@ -24,7 +25,7 @@ export const ContentWrapper = styled('div')({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  background: 'LigthGreen',
+  background: 'white',
 })
 
 export const Avatar = styled('img')(({ height, width, src, margin }) => ({
@@ -59,7 +60,7 @@ export const LogoutText = styled('h4')({
 
 
 export const ButtonSubmit = styled.button`
-  background: white;
+  background: transparent;
   color: palevioletred;
   font-size: 1em;
   margin: 1em;
@@ -84,6 +85,7 @@ export const InputContainer = styled('input')({
   fontFamily: 'Rubik',
   padding: '8px 20px',
   textDecoration: 'none',
+  background: 'transparent'
 })
 
 export const ErrorMsg = styled('span')({
@@ -107,7 +109,7 @@ export const TabWrapper = styled('div')({
 })
 
 export const TabList = styled('ol')({
-  width: '100%',
+  // width: '100%',
   borderBottom: '1px solid #ccc',
   paddingLeft: 30,
 })
@@ -130,7 +132,8 @@ export const CommentContainer = styled('div')({
   fontFamily: 'Rubik',
   marginTop: 10,
   flexDirection: 'column',
-  transition: 'all .3s ease-in-out'
+  transition: 'all .3s ease-in-out',
+  background: 'white'
 })
 
 export const CommentBody = styled('p')({

@@ -8,7 +8,7 @@ const Section = ({ name, repoName, type }) => {
   const [pressedCard, setPressedCard] = useState('')
   const queryType = type === 'pullRequests' ? type : 'issues'
   const { repo } = useRepoDataQuery(name, repoName, type)
-  console.log('-->', repo)
+
   return (
     !!repo && repo.loading ?
       <Center style={{ height: '50vh' }}>

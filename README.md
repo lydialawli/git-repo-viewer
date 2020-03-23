@@ -1,18 +1,23 @@
 # GIT REPO VIEWER
 
-## Screenshot
+![git-repo-viewer-screenshot_01](./src/assets/screenshot_01.png)
 
-![git-repo-viewer-screenshot](./src/assets/screenshot_01.png)
+## Getting started
 
-## Testing
+```
+ git clone https://github.com/lydialawli/git-repo-viewer.git
+ yarn // or npm install
+ yarn start //or npm start
+```
 
-- clone this repository, then `yarn` / `npm install` and afterwards `yarn start` / `npm start`
+## Notes
+
 - Please provide a [valid](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token)
- github auth token to login, otherwise the searches won't work.
+ Github auth token to login, otherwise the searches won't work.
 
 - There are some repository examples suggested which you can test out.
 
-- When using the searchbar in the comments section: it compares the user input with the repo section title, comment "body" or the date of creation.
+- When using the search bar in the comments section; it compares the user input with the repo section title, comment "body" or the date of creation.
 
 
 ## Task

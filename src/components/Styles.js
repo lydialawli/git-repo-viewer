@@ -85,9 +85,9 @@ export const InputContainer = styled('input')({
   textDecoration: 'none',
 })
 
-export const ErrorMsg = styled.text`
-  color: red;
-`
+export const ErrorMsg = styled('span')({
+  color: 'red',
+})
 
 
 export const SearchWrapper = styled('div')({

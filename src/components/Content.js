@@ -7,7 +7,7 @@ import Section from './Section'
 const Content = () => {
   const [userInput, setUserInput] = useState({ name: '', repoName: '' })
 
-  const repos = [
+  const exampleRepos = [
     'relic-toolkit/relic',
     'ethereum/go-ethereum',
     'ahmadawais/corona-cli',
@@ -46,8 +46,8 @@ const Content = () => {
         :
         <Center style={{ height: '50vh' }}>
           <GreyText loadingText>
-            Some random example repo's to test this app:<br />
-            {repos.map(r => <li>{r}</li>)}
+            Some example repositories:<br /><br />
+            {exampleRepos.map((r, i) => <li key={i}>{r}</li>)}
           </GreyText>
         </Center>
       }

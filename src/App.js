@@ -23,7 +23,6 @@ const client = new ApolloClient({
 })
 
 
-
 function App() {
   const [name, setName] = useState('')
   const [repo, setRepo] = useState('')

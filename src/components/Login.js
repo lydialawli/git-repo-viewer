@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { LoginWrapper, InputContainer, ButtonSubmit, ErrorMsg } from './Styles'
+import { LoginWrapper, InputContainer, ButtonSubmit } from './Styles'
 
 
-const Login = ({ onSubmit, errorMsg }) => {
+const Login = ({ onSubmit }) => {
   const [token, setToken] = useState('')
 
   return (
@@ -21,7 +21,6 @@ const Login = ({ onSubmit, errorMsg }) => {
         />
         <ButtonSubmit css={{ width: '100%', fontFamily: 'monospace' }}>SUBMIT</ButtonSubmit>
       </form>
-      <ErrorMsg >{errorMsg}</ErrorMsg>
     </LoginWrapper>
 
   )
@@ -29,7 +28,6 @@ const Login = ({ onSubmit, errorMsg }) => {
 
 Login.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  errorMsg: PropTypes.string,
 }
 
 Login.defaultProps = {

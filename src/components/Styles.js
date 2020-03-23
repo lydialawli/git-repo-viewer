@@ -37,7 +37,7 @@ export const Avatar = styled('img')(({ height, width, src, margin }) => ({
   src,
 }))
 
-export const GreyText = styled('span')(({ height, width, src, margin, loadingText }) => ({
+export const GreyText = styled('span')(({ loadingText }) => ({
   color: loadingText ? 'rgb(154,154,154)' : 'rgb(163,168,174)',
   fontSize: loadingText ? 20 : 13,
   paddingLeft: 3,
@@ -103,7 +103,6 @@ export const TabWrapper = styled('div')({
   display: 'flex',
   flex: 1,
   flexDirection: 'column',
-  // background: 'lightBlue'
 })
 
 export const TabList = styled('ol')({

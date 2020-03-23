@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useRepoDataQuery from './../queries'
+import { useRepoDataQuery } from './../queries'
 import Card from './Card'
 import { GreyText, Center } from './Styles'
 

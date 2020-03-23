@@ -1,7 +1,17 @@
 import { gql } from 'apollo-boost'
 import { useQuery } from 'react-apollo'
 
-export const PULL_REQUESTS_QUERY = gql`
+const GET_VIEWER = gql`
+	query {
+		viewer {
+			avatarUrl
+			login
+			id
+		}
+	}
+`
+
+const PULL_REQUESTS_QUERY = gql`
   query ($name: String!, $repo: String!) {
     repository(owner: $name, name: $repo) {
       pullRequests(last: 30) {
@@ -38,7 +48,7 @@ export const PULL_REQUESTS_QUERY = gql`
   }
 `
 
-export const OPEN_ISSUES_QUERY = gql`
+const OPEN_ISSUES_QUERY = gql`
   query ($name: String!, $repo: String!) {
     repository(owner: $name, name: $repo) {
       issues(last: 30, states: OPEN) {
@@ -74,7 +84,7 @@ export const OPEN_ISSUES_QUERY = gql`
   }
 `
 
-export const CLOSED_ISSUES_QUERY = gql`
+const CLOSED_ISSUES_QUERY = gql`
   query ($name: String!, $repo: String!) {
     repository(owner: $name, name: $repo) {
       issues(last: 30, states: CLOSED) {
@@ -110,11 +120,23 @@ export const CLOSED_ISSUES_QUERY = gql`
   }
 `
 
-const useRepoDataQuery = (name, repository, type, options = {}) => {
-  const queryOptions = {
-    ...options,
-    fetchPolicy: options.fetchPolicy || 'cache-and-network',
+export const useViewerQuery = () => {
+  const {
+    loading, error, data,
+  } = useQuery(GET_VIEWER)
+
+  const newData = (data && data.viewer) || {}
+
+  const res = {
+    ...newData,
+    loading,
+    error,
   }
+
+  return { res }
+}
+
+export const useRepoDataQuery = (name, repository, type) => {
 
   const queryType = () => {
     let query = ''
@@ -140,7 +162,6 @@ const useRepoDataQuery = (name, repository, type, options = {}) => {
       name: name,
       repo: repository
     },
-    ...queryOptions,
   })
 
   const newData = (data && data.repository) || {}
@@ -154,6 +175,3 @@ const useRepoDataQuery = (name, repository, type, options = {}) => {
 
   return { repo }
 }
-
-
-export default useRepoDataQuery

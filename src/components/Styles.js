@@ -4,9 +4,14 @@ export const LoginWrapper = styled('div')({
   width: '100%',
   height: '100%',
   display: 'flex',
+  flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
   background: '#F3F0ED'
+})
+
+export const Space = styled('div')({
+  height: '300px',
 })
 
 export const Header = styled('header')({
@@ -21,11 +26,13 @@ export const Header = styled('header')({
 
 export const ContentWrapper = styled('div')({
   width: '100%',
+  height: '90%',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   alignItems: 'center',
   background: 'white',
+  paddingBottom: 20,
 })
 
 export const Avatar = styled('img')(({ height, width, src, margin }) => ({
@@ -44,8 +51,15 @@ export const GreyText = styled('span')(({ loadingText }) => ({
   fontSize: loadingText ? 20 : 13,
   paddingLeft: 3,
   fontWeight: 200,
-  fontFamily: 'Rubik'
+  fontFamily: 'Rubik',
+  cursor: 'pointer'
 }))
+
+export const GreyTextBottom = styled(GreyText)({
+  position: 'absolute',
+  bottom: 1,
+  paddingBottom: 20
+})
 
 export const Center = styled('div')({
   display: 'flex',

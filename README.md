@@ -14,6 +14,7 @@
 
 - Please provide a [valid](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token)
  Github auth token to login, otherwise the searches won't work.
+ Setting some reading permissions will do.
 
 - There are some repository examples suggested which you can test out.
 

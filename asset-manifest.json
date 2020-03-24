@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/git-repo-viewer/static/css/main.39b18150.chunk.css",
+    "main.js": "/git-repo-viewer/static/js/main.7407b4ea.chunk.js",
+    "main.js.map": "/git-repo-viewer/static/js/main.7407b4ea.chunk.js.map",
+    "runtime-main.js": "/git-repo-viewer/static/js/runtime-main.19580735.js",
+    "runtime-main.js.map": "/git-repo-viewer/static/js/runtime-main.19580735.js.map",
+    "static/js/2.4aeb3bce.chunk.js": "/git-repo-viewer/static/js/2.4aeb3bce.chunk.js",
+    "static/js/2.4aeb3bce.chunk.js.map": "/git-repo-viewer/static/js/2.4aeb3bce.chunk.js.map",
+    "index.html": "/git-repo-viewer/index.html",
+    "precache-manifest.cb3c6e2381344cb41149a480b785ae26.js": "/git-repo-viewer/precache-manifest.cb3c6e2381344cb41149a480b785ae26.js",
+    "service-worker.js": "/git-repo-viewer/service-worker.js",
+    "static/css/main.39b18150.chunk.css.map": "/git-repo-viewer/static/css/main.39b18150.chunk.css.map",
+    "static/js/2.4aeb3bce.chunk.js.LICENSE.txt": "/git-repo-viewer/static/js/2.4aeb3bce.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19580735.js",
+    "static/js/2.4aeb3bce.chunk.js",
+    "static/css/main.39b18150.chunk.css",
+    "static/js/main.7407b4ea.chunk.js"
+  ]
+}
